@@ -10,7 +10,9 @@
 	};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+	@import url('https://fonts.googleapis.com/css?family=Khula');
+
 	* {
 		box-sizing: border-box;
 	}
@@ -18,6 +20,11 @@
 	body {
 		margin: 0;
 		padding: 0;
+		background-color: #7B0D33;
+		width: 100%;
+		height: 100%;
+		font-family: "Khula", sans-serif;
+		-webkit-font-smooth: auto;
 	}
 
 	#app {

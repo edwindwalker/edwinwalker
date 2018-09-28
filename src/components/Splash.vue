@@ -1,46 +1,53 @@
 <template>
-	<div id="splash" :style="{backgroundColor: theme.background}">
-		<logo :color="theme.logo"/>
+	<div id="splash">
+		<div class="site-logo"></div>
+		<hr/>
+		<div class="bio">Hi, I'm <b>Edwin Walker</b>, a software developer based in Bristol with a particular focus on JavaScript and UI.</div>
 	</div>
 </template>
 
 <script>
-	import Logo from "./Logo.vue";
-
-	function randomColor() {
-		let random255 = () => (Math.floor(Math.random() * 256));
-		return "rgb(" + Array.from({length: 3}, random255).join(",") + ")";
-	}
-	
 	export default {
-		name: "splash",
-		components: {
-			"logo": Logo
-		},
-		data: () => ({
-			// Start with white on black
-			theme: {
-				background: "rgb(0, 0, 0)",
-				logo: "rgb(255, 255, 255)"
-			}
-		}),
-		created: function() {
-			setInterval(() => {
-				this.theme = {
-					background: randomColor(),
-					logo: randomColor()
-				};
-			}, 1000);
-		}
+		name: "splash"
 	};
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	#splash {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        max-width: 300px;
+		margin: auto;
+		padding: 10vh 0;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.site-logo {
+		width: 300px;
+        background-image: url("../assets/logo.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+		background-position: center;
+		margin: auto;
+
+		// Dynamic square 
+		&:before {
+			content: "";
+			display: block;
+			padding-top: 100%;
+		}
+	}
+	
+	hr {
+		width: 50%;
+		border-color: #00B2E0;
+		-webkit-margin-before: 1em;
+		-webkit-margin-after: 1em;
+		border-style: solid;
+	}
+
+	.bio {
+		max-width: 300px;
+		text-align: center;
+		color: #FFF;
 	}
 </style>
